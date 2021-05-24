@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement;
 public class LevelWinScreen : MonoBehaviour
 {
     public string nextLevel;
-
+    public static bool GameIsComplete = false;
+    public GameObject lvlCompleteUI;
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().Equals("levelCompleteScreen"))
+        if (GameIsComplete == true)
         {
             if (Input.anyKeyDown)
             {
-                SceneManager.LoadScene(nextLevel);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                GameIsComplete = false;
             }
         }
 
@@ -24,7 +26,16 @@ public class LevelWinScreen : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            SceneManager.LoadScene("levelCompleteScreen");
+            lvlCompleteUI.SetActive(true);
+            GameIsComplete = true;
+            Time.timeScale = 0f;
+            //SceneManager.LoadScene("levelCompleteScreen");
         }
+    }
+
+    public void loadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
     }
 }
