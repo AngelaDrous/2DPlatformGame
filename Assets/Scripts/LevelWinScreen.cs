@@ -28,7 +28,7 @@ public class LevelWinScreen : MonoBehaviour
         {
             lvlCompleteUI.SetActive(true);
             GameIsComplete = true;
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             //SceneManager.LoadScene("levelCompleteScreen");
         }
     }
@@ -36,6 +36,6 @@ public class LevelWinScreen : MonoBehaviour
     public void loadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 }

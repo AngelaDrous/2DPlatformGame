@@ -150,6 +150,9 @@ public class CharacterController2D : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+			
+			
+			
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
