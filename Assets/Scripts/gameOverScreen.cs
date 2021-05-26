@@ -15,6 +15,16 @@ public class gameOverScreen : MonoBehaviour
         {
             gameOverUI.SetActive(true);
             Time.timeScale = 0f;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                tryAgain();
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                QuitGame();
+            }
+
         }
         else
         {
@@ -30,21 +40,19 @@ public class gameOverScreen : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Time.timeScale = 0f; 
             gameOverUI.SetActive(true);
             GameIsOver = true;
-            //Time.timeScale = 0f;
             //SceneManager.LoadScene("levelCompleteScreen");
         }
     }
-
-
-
 
     public void tryAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameOverUI.SetActive(false);
         GameIsOver = false;
+        Time.timeScale = 1f;
     }
 
     public void LoadMenu()
